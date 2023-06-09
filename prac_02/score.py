@@ -1,12 +1,14 @@
 """
 CP1404 - Determine score status using functions
 """
+import random
 
 
 def main():
     """Get a numeric score and display its status."""
     score = float(input("Enter score: "))
     print(determine_status(score))
+    print("Random result generated:", determine_status(random.randint(0, 100)))
 
 
 def determine_status(score):
