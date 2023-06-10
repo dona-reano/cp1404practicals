@@ -26,6 +26,7 @@ def main():
 
 
 def get_valid_score():
+    """Get a valid score from 0-100 inclusive."""
     score = int(input("Enter score: "))
     while score < 0 or score > 100:
         print("Invalid score")
@@ -34,6 +35,7 @@ def get_valid_score():
 
 
 def determine_status(score):
+    """Determine the status of a given score."""
     if score >= 90:
         print("Excellent")
     elif score >= 50:
@@ -43,6 +45,7 @@ def determine_status(score):
 
 
 def print_asterisks(score):
+    """Print the same amount of asterisks as the score."""
     print("*" * score)
 
 
