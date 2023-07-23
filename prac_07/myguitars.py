@@ -19,3 +19,12 @@ guitars.sort()
 print("These are your current guitars:")
 for guitar in guitars:
     print(guitar)
+
+guitar_name = input("Name: ")
+while guitar_name != "":
+    year = int(input("Year: "))
+    cost = float(input("Cost: $"))
+    guitar_to_add = Guitar(guitar_name, year, cost)
+    guitars.append(guitar_to_add)
+    print(f"Added {guitar_to_add} to list.")
+    guitar_name = input("Name: ")
