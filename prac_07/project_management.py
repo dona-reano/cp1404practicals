@@ -6,9 +6,13 @@ Time taken:
 from project import Project
 
 FILE_HEADER = "Name\tStart Date	Priority\tCost Estimate\tCompletion Percentage"
+
 FILENAME = "projects.txt"
+
 MENU = "- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n- (A)dd new " \
        "project\n- (U)pdate project\n- (Q)uit"
+
+COMPLETED = 100
 
 
 def main():
@@ -21,7 +25,7 @@ def main():
         elif choice == 'S':
             save_projects(projects)
         elif choice == 'D':
-            print("Display")
+            display_projects(projects)
         elif choice == 'F':
             print("Filter")
         elif choice == 'A':
@@ -33,6 +37,17 @@ def main():
         print(MENU)
         choice = input(">>> ").upper()
     print("Thank you for using custom-built project management software.")
+
+
+def display_projects(projects):
+    print("Incomplete projects:")
+    for project in projects:
+        if not project.completion_percentage == COMPLETED:
+            print(f"{project}")
+    print("Completed projects:")
+    for project in projects:
+        if project.completion_percentage == COMPLETED:
+            print(f"{project}")
 
 
 def save_projects(projects):
