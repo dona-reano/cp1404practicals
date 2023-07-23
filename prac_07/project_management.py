@@ -16,6 +16,7 @@ COMPLETED = 100
 
 
 def main():
+    """Project management program that loads from and saves to a data file."""
     print(MENU)
     projects = []
     choice = input(">>> ").upper()
@@ -29,7 +30,7 @@ def main():
         elif choice == 'F':
             print("Filter")
         elif choice == 'A':
-            print("Add")
+            add_project(projects)
         elif choice == 'U':
             print("Update")
         else:
@@ -39,7 +40,28 @@ def main():
     print("Thank you for using custom-built project management software.")
 
 
+def add_project(projects):
+    """Add a new project to the list of projects"""
+    print("Let's add a new project")
+    project_to_add = get_valid_string("Name: ")
+    start_date = get_valid_string("Start date (dd/mm/yyyy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: $"))
+    percent_complete = int(input("Percent complete: "))
+    projects.append(Project(project_to_add, start_date, priority, cost_estimate, percent_complete))
+
+
+def get_valid_string(prompt):  # Reused function from past classes to get a valid string
+    """Prompt the user for a non-empty string."""
+    string = input(prompt)
+    while string == "":
+        print("Input cannot be blank")
+        string = input(prompt)
+    return string
+
+
 def display_projects(projects):
+    """Displays incomplete and completed projects."""
     print("Incomplete projects:")
     for project in projects:
         if not project.completion_percentage == COMPLETED:
@@ -51,6 +73,7 @@ def display_projects(projects):
 
 
 def save_projects(projects):
+    """Saves project details to a data file."""
     file_name = input("Save to file name: ")
     out_file = open(file_name, 'w')
     print(FILE_HEADER, file=out_file)
@@ -62,6 +85,7 @@ def save_projects(projects):
 
 
 def load_projects(projects):
+    """Loads a data file containing project details."""
     file_name = input("Load from file name: ")
     in_file = open(file_name, 'r')
     in_file.readline()
